@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MixoLogy;assembly=MixoLogy"
+             x:Class="MixoLogy.MainPage">
+
+    <Grid>
+    <ScrollView BackgroundColor="Black">
+            <FlexLayout x:Name="flexLayout" Direction="Row" Wrap="Wrap" JustifyContent="Start"
+                        AlignItems="Start"
+                        AlignContent="Start"
+                        Padding="8">
+            <Image WidthRequest="330" 
+                   HorizontalOptions="CenterAndExpand" 
+                   VerticalOptions="FillAndExpand"
+                   BackgroundColor="Black" 
+                   Source="{local:ImageResource MixoLogy.Resources.images.logo.png}">
+            </Image>
+        </FlexLayout>
+        
+        
+    </ScrollView>
+        <!--<ScrollView>
+            <FlexLayout>
+                <Button x:Name="loadMoreBtn" Visual="Material" Text="Load More"></Button>
+            </FlexLayout>
+        </ScrollView>-->
+    </Grid>
+</ContentPage>
