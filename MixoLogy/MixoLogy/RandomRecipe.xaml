@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mixoLogy="clr-namespace:MixoLogy;assembly=MixoLogy"
+             x:Class="MixoLogy.RandomRecipe">
+    <ContentPage.Content>
+        <Grid>
+            <ScrollView BackgroundColor="Black">
+                <StackLayout x:Name="stackLayout">
+                    <Image WidthRequest="330" 
+                           HorizontalOptions="CenterAndExpand" 
+                           VerticalOptions="FillAndExpand"
+                           BackgroundColor="Black" 
+                           Source="{mixoLogy:ImageResource MixoLogy.Resources.images.logo.png}"></Image>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End" BackgroundColor="DimGray" HeightRequest="40">
+                <ImageButton x:Name="cocktailListBtn" Padding="30,0" HorizontalOptions="StartAndExpand" BackgroundColor="DimGray" Source="{mixoLogy:ImageResource MixoLogy.Resources.images.icon-1.png}"></ImageButton>
+                <ImageButton x:Name="alcoholRecognizeBtn" Padding="50,0" HorizontalOptions="CenterAndExpand" BackgroundColor="DimGray" Source="{mixoLogy:ImageResource MixoLogy.Resources.images.icon-2.png}"></ImageButton>
+                <ImageButton x:Name="randomRecipeBtn" Padding="30,0" Clicked="RandomRecipe" HorizontalOptions="EndAndExpand" BackgroundColor="DimGray" Source="{mixoLogy:ImageResource MixoLogy.Resources.images.icon-4.png}"></ImageButton>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

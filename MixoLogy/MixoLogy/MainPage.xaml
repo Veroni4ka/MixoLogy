@@ -2,28 +2,29 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MixoLogy;assembly=MixoLogy"
-             x:Class="MixoLogy.MainPage">
+             xmlns:styleSheets="clr-namespace:Xamarin.Forms.StyleSheets;assembly=Xamarin.Forms.Core"
+             x:Class="MixoLogy.MainPage"
+             Visual="Material">
 
     <Grid>
     <ScrollView BackgroundColor="Black">
-            <FlexLayout x:Name="flexLayout" Direction="Row" Wrap="Wrap" JustifyContent="Start"
-                        AlignItems="Start"
-                        AlignContent="Start"
-                        Padding="8">
+        <StackLayout x:Name="stackLayout">
             <Image WidthRequest="330" 
                    HorizontalOptions="CenterAndExpand" 
                    VerticalOptions="FillAndExpand"
                    BackgroundColor="Black" 
-                   Source="{local:ImageResource MixoLogy.Resources.images.logo.png}">
-            </Image>
-        </FlexLayout>
-        
-        
-    </ScrollView>
-        <!--<ScrollView>
-            <FlexLayout>
-                <Button x:Name="loadMoreBtn" Visual="Material" Text="Load More"></Button>
+                   Source="{local:ImageResource MixoLogy.Resources.images.logo.png}"></Image>
+            <FlexLayout x:Name="flexLayout" Direction="Row" Wrap="Wrap" JustifyContent="Start"
+                        AlignItems="Start"
+                        AlignContent="Start"
+                        Padding="8">
             </FlexLayout>
-        </ScrollView>-->
+        </StackLayout>
+    </ScrollView>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End" BackgroundColor="DimGray" HeightRequest="40">
+            <ImageButton x:Name="cocktailListBtn" Padding="30,0" HorizontalOptions="StartAndExpand" BackgroundColor="DimGray" Source="{local:ImageResource MixoLogy.Resources.images.icon-1.png}"></ImageButton>
+            <ImageButton x:Name="alcoholRecognizeBtn" Padding="50,0" HorizontalOptions="CenterAndExpand" BackgroundColor="DimGray" Source="{local:ImageResource MixoLogy.Resources.images.icon-2.png}"></ImageButton>
+            <ImageButton x:Name="randomRecipeBtn" Padding="30,0" Clicked="RandomRecipe" HorizontalOptions="EndAndExpand" BackgroundColor="DimGray" Source="{local:ImageResource MixoLogy.Resources.images.icon-4.png}"></ImageButton>
+        </StackLayout>
     </Grid>
 </ContentPage>
