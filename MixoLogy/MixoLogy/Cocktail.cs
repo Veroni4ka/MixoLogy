@@ -1,6 +1,6 @@
 ﻿namespace MixoLogy
 {
-    internal class Cocktail
+    public class Cocktail
     {
         public string StrDrink { get; set; }
         public string DateModified { get; set; }

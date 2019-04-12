@@ -38,7 +38,7 @@ namespace MixoLogy
             StreamReader GetFileStream(string name);
         }
 
-        private List<Cocktail> LoadCocktailsCollection()
+        public static List<Cocktail> LoadCocktailsCollection()
         {
             int imageDimension = Device.RuntimePlatform == Device.iOS ||
                                  Device.RuntimePlatform == Device.Android ? 240 : 120;
@@ -134,7 +134,7 @@ namespace MixoLogy
 
         private void RandomRecipe(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Navigation.PushAsync(new RandomRecipe());
         }
     }
 }
