@@ -19,6 +19,7 @@ namespace MixoLogy
         public RandomRecipe ()
 		{
 			InitializeComponent ();
+            DisplayRecipe();
 		    Accelerometer.ShakeDetected += Accelerometer_ShakeDetected;
         }
 
@@ -54,11 +55,18 @@ namespace MixoLogy
 
 	    void Accelerometer_ShakeDetected(object sender, EventArgs e)
 	    {
+	        DisplayRecipe();
+	    }
+
+	    private void DisplayRecipe()
+	    {
 	        var cocktail = GenerateRecipe();
-	        
+
 	        FieldInfo[] fields = typeof(Cocktail).GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
-	        var ingredients = fields.Where(x => x.Name.Contains("StrIngredient") && x.GetValue(cocktail).ToString() != "").ToList();
-	        var measurements = fields.Where(x => x.Name.Contains("StrMeasure") && x.GetValue(cocktail).ToString() != "").ToList();
+	        var ingredients = fields.Where(x => x.Name.Contains("StrIngredient") && x.GetValue(cocktail).ToString() != "")
+	            .ToList();
+	        var measurements = fields.Where(x => x.Name.Contains("StrMeasure") && x.GetValue(cocktail).ToString() != "")
+	            .ToList();
 
 	        var instructions = "Ingredients:\n";
 	        for (var i = 0; i < ingredients.Count; i++)
@@ -70,5 +78,5 @@ namespace MixoLogy
 	        ingredientsLbl.Text = instructions;
 	        recipeLbl.Text = cocktail.StrInstructions;
 	    }
-    }
+	}
 }
