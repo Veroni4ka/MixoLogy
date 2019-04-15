@@ -33,6 +33,13 @@ namespace MixoLogy
             stackLayout.Children.Add(button);
         }
 
+        protected override void OnAppearing()
+        {
+            NavigationPage.SetHasNavigationBar(this, false);
+
+            base.OnAppearing();
+        }
+
         public interface IFileService
         {
             StreamReader GetFileStream(string name);
