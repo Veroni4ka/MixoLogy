@@ -2,11 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mixoLogy="clr-namespace:MixoLogy;assembly=MixoLogy"
-             x:Class="MixoLogy.RandomRecipe"
+             x:Class="MixoLogy.BarcodeScan"
              Visual="Material">
+
     <ContentPage.Content>
         <Grid>
-            <ScrollView BackgroundColor="Black" Margin="0, 0, 0, 30"> 
+            <ScrollView BackgroundColor="Black" Margin="0, 0, 0, 30">
                 <StackLayout x:Name="stackLayout">
                     <Image WidthRequest="330"
                            HorizontalOptions="CenterAndExpand"
@@ -15,6 +16,7 @@
                            Source="{mixoLogy:ImageResource MixoLogy.Resources.images.logo.png}"></Image>
                     <FlexLayout Direction="Column" AlignItems="Start" 
                         AlignContent="Start" Padding="8">
+                        <Button x:Name="scanBtn" Text="Scan Barcode" BackgroundColor="HotPink" HorizontalOptions="CenterAndExpand" Margin="5"></Button>
                         <Label x:Name="drinkTitleLbl" TextColor="Aquamarine" FontSize="24" FontAttributes="Bold" Margin="0, 10"></Label>
                         <Label x:Name="ingredientsLbl" TextColor="HotPink" FontSize="14" Margin="0, 5"></Label>
                         <Label x:Name="recipeLbl" TextColor="White" FontSize="14" Margin="0, 5"></Label>
@@ -25,8 +27,8 @@
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End" BackgroundColor="DimGray" HeightRequest="40">
                 <ImageButton x:Name="cocktailListBtn" Padding="30,0" Clicked="CocktailListBtn_OnClicked" HorizontalOptions="StartAndExpand" BackgroundColor="DimGray" Source="{mixoLogy:ImageResource MixoLogy.Resources.images.icon-1.png}"></ImageButton>
-                <ImageButton x:Name="alcoholRecognizeBtn" Padding="50,0" Clicked="AlcoholRecognizeBtn_OnClicked"  HorizontalOptions="CenterAndExpand" BackgroundColor="DimGray" Source="{mixoLogy:ImageResource MixoLogy.Resources.images.icon-2.png}"></ImageButton>
-                <ImageButton x:Name="randomRecipeBtn" Padding="30,0" HorizontalOptions="EndAndExpand" BackgroundColor="Black" Source="{mixoLogy:ImageResource MixoLogy.Resources.images.icon-4.png}"></ImageButton>
+                <ImageButton x:Name="alcoholRecognizeBtn" Padding="50,0" HorizontalOptions="CenterAndExpand" BackgroundColor="Black" Source="{mixoLogy:ImageResource MixoLogy.Resources.images.icon-2.png}"></ImageButton>
+                <ImageButton x:Name="randomRecipeBtn" Padding="30,0" Clicked="RandomRecipeBtn_OnClicked" HorizontalOptions="EndAndExpand" BackgroundColor="DimGray" Source="{mixoLogy:ImageResource MixoLogy.Resources.images.icon-4.png}"></ImageButton>
             </StackLayout>
         </Grid>
     </ContentPage.Content>

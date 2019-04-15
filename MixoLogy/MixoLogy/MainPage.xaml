@@ -6,7 +6,7 @@
              x:Class="MixoLogy.MainPage"
              Visual="Material">
 
-    <Grid>
+    <Grid> 
     <ScrollView BackgroundColor="Black">
         <StackLayout x:Name="stackLayout">
             <Image WidthRequest="330" 
@@ -14,7 +14,7 @@
                    VerticalOptions="StartAndExpand"
                    BackgroundColor="Black" 
                    Source="{local:ImageResource MixoLogy.Resources.images.logo.png}"></Image>
-            <FlexLayout x:Name="flexLayout" Direction="Row" Wrap="Wrap" JustifyContent="Start"
+            <FlexLayout x:Name="flexLayout" Direction="Row" Wrap="Wrap" JustifyContent="Center"
                         AlignItems="Start"
                         AlignContent="Start"
                         Padding="8">
@@ -23,7 +23,7 @@
     </ScrollView>
         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End" BackgroundColor="DimGray" HeightRequest="40">
             <ImageButton x:Name="cocktailListBtn" Padding="30,0" HorizontalOptions="StartAndExpand" BackgroundColor="Black" Source="{local:ImageResource MixoLogy.Resources.images.icon-1.png}"></ImageButton>
-            <ImageButton x:Name="alcoholRecognizeBtn" Padding="50,0" HorizontalOptions="CenterAndExpand" BackgroundColor="DimGray" Source="{local:ImageResource MixoLogy.Resources.images.icon-2.png}"></ImageButton>
+            <ImageButton x:Name="alcoholRecognizeBtn" Padding="50,0" Clicked="AlcoholRecognize"  HorizontalOptions="CenterAndExpand" BackgroundColor="DimGray" Source="{local:ImageResource MixoLogy.Resources.images.icon-2.png}"></ImageButton>
             <ImageButton x:Name="randomRecipeBtn" Padding="30,0" Clicked="RandomRecipe" HorizontalOptions="EndAndExpand" BackgroundColor="DimGray" Source="{local:ImageResource MixoLogy.Resources.images.icon-4.png}"></ImageButton>
         </StackLayout>
     </Grid>

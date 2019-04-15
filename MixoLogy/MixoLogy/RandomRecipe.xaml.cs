@@ -23,7 +23,14 @@ namespace MixoLogy
 		    Accelerometer.ShakeDetected += Accelerometer_ShakeDetected;
         }
 
-	    private Cocktail GenerateRecipe()
+	    protected override void OnAppearing()
+	    {
+	        NavigationPage.SetHasNavigationBar(this, false);
+
+	        base.OnAppearing();
+	    }
+
+        private Cocktail GenerateRecipe()
 	    {
 	        var rnd = new Random();
 	        var num = rnd.Next(1, _cocktails.Count);
@@ -68,7 +75,7 @@ namespace MixoLogy
 	        var measurements = fields.Where(x => x.Name.Contains("StrMeasure") && x.GetValue(cocktail).ToString() != "")
 	            .ToList();
 
-	        var instructions = "Ingredients:\n";
+	        var instructions = "Ingredients:\n\n";
 	        for (var i = 0; i < ingredients.Count; i++)
 	        {
 	            instructions += ingredients[i].GetValue(cocktail) + " " + measurements[i].GetValue(cocktail) + "\n";
@@ -76,7 +83,13 @@ namespace MixoLogy
 
 	        drinkTitleLbl.Text = cocktail.StrDrink;
 	        ingredientsLbl.Text = instructions;
-	        recipeLbl.Text = cocktail.StrInstructions;
+	        recipeLbl.Text = "Instructions:\n\n" + cocktail.StrInstructions;
+	        cocktailImg.Source = ImageSource.FromUri(new Uri(cocktail.StrDrinkThumb));
 	    }
-	}
+
+        private void AlcoholRecognizeBtn_OnClicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new BarcodeScan());
+        }
+    }
 }

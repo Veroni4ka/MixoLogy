@@ -143,5 +143,10 @@ namespace MixoLogy
         {
             Navigation.PushAsync(new RandomRecipe());
         }
+
+        private void AlcoholRecognize(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new BarcodeScan());
+        }
     }
 }
