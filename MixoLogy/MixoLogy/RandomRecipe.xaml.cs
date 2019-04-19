@@ -20,6 +20,7 @@ namespace MixoLogy
 		{
 			InitializeComponent ();
             DisplayRecipe();
+            ToggleAccelerometer();
 		    Accelerometer.ShakeDetected += Accelerometer_ShakeDetected;
         }
 
