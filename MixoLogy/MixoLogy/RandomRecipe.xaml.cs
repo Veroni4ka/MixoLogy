@@ -13,7 +13,7 @@ namespace MixoLogy
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class RandomRecipe : ContentPage
 	{
-	    List<Cocktail> _cocktails = MainPage.LoadCocktailsCollection();
+	    List<Cocktail> _cocktails = Cocktail.LoadCocktailsCollection();
 	    SensorSpeed speed = SensorSpeed.Game;
 
         public RandomRecipe ()
@@ -49,7 +49,7 @@ namespace MixoLogy
 	        }
 	        catch (FeatureNotSupportedException fnsEx)
 	        {
-	            // Feature not supported on device
+	            DisplayAlert("Not supported", "Shake detection is not supported on your device", "Ok");
 	        }
 	        catch (Exception ex)
 	        {

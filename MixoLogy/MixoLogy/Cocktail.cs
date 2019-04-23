@@ -1,4 +1,10 @@
-﻿namespace MixoLogy
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
+using CsvHelper;
+using Xamarin.Forms;
+
+namespace MixoLogy
 {
     public class Cocktail
     {
@@ -42,5 +48,42 @@
         public string StrMeasure8 { get; set; }
         public string StrMeasure9 { get; set; }
         public string StrVideo { get; set; }
+
+        public static List<Cocktail> LoadCocktailsCollection()
+        {
+            int imageDimension = Device.RuntimePlatform == Device.iOS ||
+                                 Device.RuntimePlatform == Device.Android ? 240 : 120;
+
+            var assembly = typeof(Cocktail).GetTypeInfo().Assembly;
+            Stream stream = assembly.GetManifestResourceStream("MixoLogy.Resources.all_drinks.csv");
+            //Stream stream = assembly.GetManifestResourceStream(fileName);
+            //var csvData = DataTable.New.ReadLazy(stream);
+            //return csvData.RowsAs<Cocktail>().ToList();
+            var list = new List<Cocktail>();
+            using (stream)
+            {
+                if (stream != null)
+                    using (var reader = new StreamReader(stream))
+                    {
+                        using (var csv = new CsvReader(reader))
+                        {
+
+                            csv.Configuration.Delimiter = ",";
+                            csv.Configuration.PrepareHeaderForMatch = (header, index) => header.ToLower();
+                            while (csv.Read())
+                            {
+                                var row = csv.GetRecord<Cocktail>();
+                                if (row == null)
+                                {
+                                    break;
+                                }
+                                list.Add(row);
+                            }
+                        }
+                    }
+            }
+
+            return list;
+        }
     }
 }
