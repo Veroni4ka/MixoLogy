@@ -59,7 +59,6 @@ namespace MixoLogy
 	            }
                 
 
-                //await DisplayAlert("Scanned result", curType, "OK");
 	        });
         }
 
@@ -70,29 +69,28 @@ namespace MixoLogy
             
             foreach (var cocktailItem in _cocktails)
 	        {
-	            var ingredientsList = fields.Where(x => x.Name.Contains("StrIngredient") && x.GetValue(cocktailItem).ToString() != "")
+	            List<string> instructions = new List<string>();
+                var ingredientsList = fields.Where(x => x.Name.Contains("StrIngredient") && x.GetValue(cocktailItem).ToString() != "")
 	            .ToList();
-	            ingredients.Add(cocktailItem.IdDrink, string.Join(", ", ingredientsList));
+	            foreach (var t in ingredientsList)
+	            {
+	                instructions.Add(t.GetValue(cocktailItem).ToString());
+	            }
+
+	            ingredients.Add(cocktailItem.IdDrink, string.Join(", ", instructions));
 	        }
 
-	        var drinkList = ingredients.Where(x => x.Value.ToLower().Contains(alcType));
-	        if (drinkList != null && drinkList.Any())
+	        var drinkList = ingredients.Where(x => x.Value.ToLower().Contains(alcType)).Select(i => i.Key).ToList();
+	        if (drinkList.Any())
 	        {
                 var rnd = new Random();
 	            var num = rnd.Next(1, drinkList.Count());
-	            var drinkId = drinkList.ElementAt(num).Key;
+	            var drinkId = drinkList.ElementAt(num);
 
 	            return _cocktails.First(x => x.IdDrink == drinkId);
 	        }
 	        
             return new Cocktail();
-
-	        //_cocktails.Where(x=>x.StrIngredient1.Contains(alcType) || x.StrIngredient2.Contains(alcType) ||
-	        //                    x.StrIngredient3.Contains(alcType) || x.StrIngredient4.Contains(alcType) ||
-	        //                    x.StrIngredient5.Contains(alcType) || x.StrIngredient6.Contains(alcType) ||
-	        //                    x.StrIngredient7.Contains(alcType) || x.StrIngredient8.Contains(alcType) ||
-	        //                    x.StrIngredient9.Contains(alcType) || x.StrIngredient10.Contains(alcType) ||
-	        //                    x.StrIngredient1.Contains(alcType) || x.StrIngredient2.Contains(alcType) ||)
 	    }
 
 	    public void DisplayRecipe(Cocktail cocktail)
@@ -119,7 +117,7 @@ namespace MixoLogy
 	    {
 	        var result = string.Empty;
 	        HttpClient client = new HttpClient();
-	        var uri = new Uri("https://api.barcodelookup.com/v2/products?barcode="+ code + "&formatted=y&key=ifDzhmKslKav42OD93NE");
+	        var uri = new Uri("https://api.barcodelookup.com/v2/products?barcode="+ code + "&formatted=y&key=xxx");
 	        var response = await client.GetAsync(uri);
 	        if (response.IsSuccessStatusCode)
 	        {
@@ -130,5 +128,6 @@ namespace MixoLogy
 
 	        return result;
 	    }
-    }
+
+	}
 }
