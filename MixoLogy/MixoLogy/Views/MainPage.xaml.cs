@@ -35,7 +35,7 @@ namespace MixoLogy
 
         protected override void OnAppearing()
         {
-            NavigationPage.SetHasNavigationBar(this, false);
+            Shell.SetNavBarIsVisible(this, false);
 
             base.OnAppearing();
         }

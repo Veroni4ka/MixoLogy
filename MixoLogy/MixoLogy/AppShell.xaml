@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:mixoLogy="clr-namespace:MixoLogy;assembly=MixoLogy"
+       x:Class="MixoLogy.AppShell">
+    <Shell.Resources>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.TabBarUnselectedColor" Value="DimGray" />
+                <!--For the Title and the icon in the bottom bar-->
+                <Setter Property="Shell.TitleColor" Value="White" />
+                <!--For the bottom tab-->
+                <Setter Property="Shell.TabBarBackgroundColor" Value="Black" />
+            </Style>
+            <Style TargetType="ShellItem" 
+                   BasedOn="{StaticResource BaseStyle}" />
+    </Shell.Resources>
+    <TabBar StyleId="BaseStyle">
+        <Tab 
+             Icon="{mixoLogy:ImageResource MixoLogy.Resources.images.icon-1.png}">
+            <ShellContent Route="main">
+                <mixoLogy:MainPage />
+            </ShellContent>
+        </Tab>
+        <Tab 
+             Icon="{mixoLogy:ImageResource MixoLogy.Resources.images.icon-2.png}">
+            <ShellContent Route="barcode">
+                <mixoLogy:BarcodeScan />
+            </ShellContent>
+        </Tab>
+        <Tab 
+            Icon="{mixoLogy:ImageResource MixoLogy.Resources.images.icon-4.png}">
+            <ShellContent Route="random">
+                <mixoLogy:RandomRecipe />
+            </ShellContent>
+        </Tab>
+    </TabBar>
+
+</Shell>
