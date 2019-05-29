@@ -11,10 +11,10 @@
                 <!--For the bottom tab-->
                 <Setter Property="Shell.TabBarBackgroundColor" Value="Black" />
             </Style>
-            <Style TargetType="ShellItem" 
+            <Style TargetType="TabBar" 
                    BasedOn="{StaticResource BaseStyle}" />
     </Shell.Resources>
-    <TabBar StyleId="BaseStyle">
+    <TabBar>
         <Tab 
              Icon="{mixoLogy:ImageResource MixoLogy.Resources.images.icon-1.png}">
             <ShellContent Route="main">

@@ -79,23 +79,11 @@ namespace MixoLogy
         {
             var btn = sender as ImageButton;
             var cocktail = btn?.CommandParameter as Cocktail;
-            FieldInfo[] fields = typeof(Cocktail).GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
-            var ingredients = fields.Where(x => x.Name.Contains("StrIngredient") && x.GetValue(cocktail).ToString() != "").ToList();
-            var measurements = fields.Where(x => x.Name.Contains("StrMeasure") && x.GetValue(cocktail).ToString() != "").ToList();
-
-            var instructions = "Ingredients:\n";
-            for (var i = 0; i < ingredients.Count; i++)
-            {
-                instructions += ingredients[i].GetValue(cocktail) + " " + measurements[i].GetValue(cocktail) + "\n";
-            }
-
+            ShellNavigationState state = Shell.Current.CurrentState;
             if (cocktail != null)
             {
-                var answer = await DisplayAlert(cocktail.StrDrink, instructions, "Continue", "Close");
-                if (answer)
-                {
-                    await DisplayAlert(cocktail.StrDrink, "Recipe: " + cocktail.StrInstructions, "Close");
-                }
+                await Shell.Current.GoToAsync($"{state.Location}/random?name={cocktail.StrDrink}");
+                Shell.Current.FlyoutIsPresented = false;
             }
         }
 

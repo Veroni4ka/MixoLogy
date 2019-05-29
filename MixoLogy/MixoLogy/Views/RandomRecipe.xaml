@@ -6,7 +6,7 @@
              Visual="Material">
     <ContentPage.Content>
         <Grid>
-            <ScrollView BackgroundColor="Black" Margin="0, 0, 0, 30"> 
+            <ScrollView BackgroundColor="Black" Padding="10, 0, 0, 30"> 
                 <StackLayout x:Name="stackLayout">
                     <Image WidthRequest="330"
                            HorizontalOptions="CenterAndExpand"
@@ -22,12 +22,6 @@
                     </FlexLayout>
                 </StackLayout>
             </ScrollView>
-
-            <!--<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End" BackgroundColor="DimGray" HeightRequest="40">
-                <ImageButton x:Name="cocktailListBtn" Padding="30,0" Clicked="CocktailListBtn_OnClicked" HorizontalOptions="StartAndExpand" BackgroundColor="DimGray" Source="{mixoLogy:ImageResource MixoLogy.Resources.images.icon-1.png}"></ImageButton>
-                <ImageButton x:Name="alcoholRecognizeBtn" Padding="50,0" Clicked="AlcoholRecognizeBtn_OnClicked"  HorizontalOptions="CenterAndExpand" BackgroundColor="DimGray" Source="{mixoLogy:ImageResource MixoLogy.Resources.images.icon-2.png}"></ImageButton>
-                <ImageButton x:Name="randomRecipeBtn" Padding="30,0" HorizontalOptions="EndAndExpand" BackgroundColor="Black" Source="{mixoLogy:ImageResource MixoLogy.Resources.images.icon-4.png}"></ImageButton>
-            </StackLayout>-->
         </Grid>
     </ContentPage.Content>
 </ContentPage>
