@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Xamarin.Forms;
@@ -116,17 +118,27 @@ namespace MixoLogy
 	    public async Task<string> RefreshDataAsync(string code)
 	    {
 	        var result = string.Empty;
-	        HttpClient client = new HttpClient();
-	        var uri = new Uri("https://api.barcodelookup.com/v2/products?barcode="+ code + "&formatted=y&key=xxx");
-	        var response = await client.GetAsync(uri);
-	        if (response.IsSuccessStatusCode)
-	        {
-	            var content = await response.Content.ReadAsStringAsync();
-	            dynamic dobj = JsonConvert.DeserializeObject<dynamic>(content);
-	            result = dobj["products"][0]["product_name"];
+	        var uri = new Uri("https://seeingai.trafficmanager.net/api/v1/query?intent=Product");
+            using (var client = HttpClientFactory.Create())
+            using (var request = new HttpRequestMessage())
+            {
+                request.Method = HttpMethod.Post;
+                request.RequestUri = uri;
+                request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                request.Headers.Add("signature", "gvoKXKGmEO7YhqzQWaXoN/v1ieHQ00mh2vnKKEFpQ0o=");
+                request.Content = new StringContent("{ \"barcode\": \"" + code + "\" }", Encoding.UTF8, "application/json");
+
+                var response = await client.SendAsync(request).ConfigureAwait(false);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    dynamic dobj = JsonConvert.DeserializeObject<dynamic>(content);
+                    result = dobj["Product"]["Content"];
+                }
+
+                return result;
             }
 
-	        return result;
 	    }
 
 	}
